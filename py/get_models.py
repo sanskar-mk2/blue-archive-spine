@@ -101,8 +101,6 @@ def main():
                 print(f"[{ver}] No new update. Stopping.")
                 exit()
             print(f"Update {ver_temp} -> {ver}")
-    with open("./data/version.txt", "w") as f:
-        f.write(ver)
 
     # Download models
     models = getModels()
@@ -141,6 +139,9 @@ def main():
         downloadFile(url=model, full_path=download_destination)
         # Extract model
         extractModel(src=download_destination, dest=extract_destination)
+
+    with open("./data/version.txt", "w") as f:
+        f.write(ver)
 
 
 main()
